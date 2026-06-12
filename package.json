@@ -1,0 +1,11 @@
+{
+  "name": "docupixie-system-design",
+  "version": "1.0.0",
+  "description": "Interactive System Design Presentation for DocuPixie",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "pdf-parse": "^2.4.5"
+  }
+}

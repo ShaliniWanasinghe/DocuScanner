@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design - SE IT2122 Group 01</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="dark-theme">
+    <!-- Header -->
+    <header class="app-header">
+        <div class="header-left">
+            <button id="menu-toggle-btn" class="icon-btn" aria-label="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="brand">
+                <span class="badge">IT2122</span>
+                <span class="project-title">System Design</span>
+            </div>
+        </div>
+        
+        <div class="header-center">
+            <div class="mode-selector">
+                <button id="mode-presentation" class="mode-btn active">Presentation</button>
+                <button id="mode-case-study" class="mode-btn">DocuPixie Simulator</button>
+            </div>
+        </div>
+
+        <div class="header-right">
+            <span class="group-tag">Group - 01</span>
+        </div>
+    </header>
+
+    <!-- Sidebar Slide-out Navigation -->
+    <aside id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h3>Table of Contents</h3>
+            <button id="sidebar-close-btn" class="icon-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul id="toc-list">
+                <!-- Dynamically populated -->
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <p>Software Engineering - IT2122</p>
+        </div>
+    </aside>
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- Main Content Container -->
+    <main class="main-container">
+        <!-- Presentation Container -->
+        <div id="slides-viewport" class="slides-viewport">
+            
+            <!-- Slide 1: Title -->
+            <section class="slide title-slide active" data-title="Title Slide">
+                <div class="title-bg-mesh"></div>
+                <div class="slide-content text-center">
+                    <h2 class="subheading">SOFTWARE ENGINEERING - IT2122</h2>
+                    <h1 class="main-title">SYSTEM DESIGN</h1>
+                    <p class="subtitle">A Comprehensive Overview of Architectures, Principles, Diagrams, and Patterns</p>
+                    
+                    <div class="title-footer">
+                        <div class="group-info">
+                            <span class="group-number">GROUP - 01</span>
+                            <span class="separator">|</span>
+                            <span class="case-study-label">Case Study: DocuPixie</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 2: Introduction -->
+            <section class="slide" data-title="Introduction">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Introduction to System Design</h2>
+                    <div class="grid-2col">
+                        <div class="intro-left">
+                            <div class="card glass-card">
+                                <div class="card-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                                </div>
+                                <h3>Definition</h3>
+                                <p>System design is the process of defining the architecture, modules, interfaces, and data for a system to satisfy specified requirements.</p>
+                            </div>
+                            <div class="card glass-card margin-top">
+                                <div class="card-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                </div>
+                                <h3>Purpose</h3>
+                                <ul>
+                                    <li>Bridges the gap between requirements and implementation.</li>
+                                    <li>Ensures the system is scalable, reliable, and maintainable.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="intro-right">
+                            <div class="card glass-card height-full">
+                                <h3>The Process & Importance</h3>
+                                <div class="process-flow">
+                                    <div class="process-step">
+                                        <div class="step-num">1</div>
+                                        <div class="step-desc">
+                                            <strong>Requirement Analysis</strong>
+                                            <p>Gathering and formalizing constraints and needs.</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-num">2</div>
+                                        <div class="step-desc">
+                                            <strong>High-Level Design</strong>
+                                            <p>Defining architecture and major modules.</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-num">3</div>
+                                        <div class="step-desc">
+                                            <strong>Detailed/Low-Level Design</strong>
+                                            <p>Defining code components, algorithms, and logic.</p>
+                                        </div>
+                                    </div>
+                                    <div class="process-step">
+                                        <div class="step-num">4</div>
+                                        <div class="step-desc">
+                                            <strong>Documentation (UML)</strong>
+                                            <p>Visually modeling structures, states, and workflows.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <h4>Why it Matters in SE:</h4>
+                                <ul class="checklist">
+                                    <li>Enables systematic problem-solving</li>
+                                    <li>Enhances collaboration across cross-functional teams</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: High-Level vs Low-Level Design -->
+            <section class="slide" data-title="HLD vs LLD">
+                <div class="slide-content">
+                    <h2 class="slide-heading">High-Level vs. Low-Level Design</h2>
+                    <div class="grid-2col">
+                        <div class="card hld-card">
+                            <div class="card-badge hld-badge">Architecture Level</div>
+                            <h3>High-Level Design (HLD)</h3>
+                            <ul class="design-list">
+                                <li><strong>Focus:</strong> System architecture, global structure, and integration.</li>
+                                <li><strong>Includes:</strong> Module boundary designs, database schemas, and external system interfaces.</li>
+                                <li><strong>Output:</strong> System topology diagrams, block diagrams, data flow diagrams (DFD).</li>
+                                <li><strong>Target Audience:</strong> Architects, project managers, and lead developers.</li>
+                            </ul>
+                        </div>
+                        <div class="card lld-card">
+                            <div class="card-badge lld-badge">Component Level</div>
+                            <h3>Low-Level Design (LLD)</h3>
+                            <ul class="design-list">
+                                <li><strong>Focus:</strong> Internal component design, detailing specific classes and methods.</li>
+                                <li><strong>Includes:</strong> Local algorithms, state logic, classes, data structures, and APIs.</li>
+                                <li><strong>Output:</strong> Class diagrams, pseudo-code, database table details, unit test plans.</li>
+                                <li><strong>Target Audience:</strong> Programmers, developers, and QA engineers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card glass-card margin-top">
+                        <h4 class="text-center">Key Differences: A Comparison</h4>
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>High-Level Design (HLD)</th>
+                                    <th>Low-Level Design (LLD)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Scope</strong></td>
+                                    <td>System-wide macro view</td>
+                                    <td>Module-specific micro view</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Core Focus</strong></td>
+                                    <td>What system needs to do (Architecture)</td>
+                                    <td>How components will do it (Implementation)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>UML Diagrams</strong></td>
+                                    <td>Component diagrams, Deployment diagrams</td>
+                                    <td>Class diagrams, Sequence diagrams</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: Cohesion & Coupling -->
+            <section class="slide" data-title="Cohesion & Coupling">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Design Principles: Cohesion and Coupling</h2>
+                    <div class="grid-2col alignment-stretch">
+                        <div class="theory-panel">
+                            <div class="card glass-card card-cohesion">
+                                <div class="badge-dot cohesion-dot"></div>
+                                <h3>Cohesion</h3>
+                                <p><strong>Definition:</strong> The degree of relatedness and single-focused responsibility of functions within a single module.</p>
+                                <div class="accent-box success-accent">
+                                    <strong>Goal: High Cohesion</strong>
+                                    <p>A module should do one thing and do it well, grouping tightly related tasks together. Makes modules readable and reusable.</p>
+                                </div>
+                            </div>
+                            <div class="card glass-card card-coupling margin-top">
+                                <div class="badge-dot coupling-dot"></div>
+                                <h3>Coupling</h3>
+                                <p><strong>Definition:</strong> The degree of direct dependency and interconnection between different modules.</p>
+                                <div class="accent-box primary-accent">
+                                    <strong>Goal: Low Coupling</strong>
+                                    <p>Minimize connections between modules. If one module changes, it shouldn't force cascading changes across the system.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cohesion and Coupling Interactive Widget -->
+                        <div class="card glass-card simulator-panel flex-column">
+                            <div class="widget-header">
+                                <h3>Interactive Modular Simulation</h3>
+                                <p>Toggle the configuration below to see how modular design impacts code dependencies.</p>
+                            </div>
+                            
+                            <div class="simulation-controls">
+                                <button id="btn-high-modular" class="sim-toggle-btn active">High Cohesion, Low Coupling (Recommended)</button>
+                                <button id="btn-low-modular" class="sim-toggle-btn">Low Cohesion, High Coupling</button>
+                            </div>
+
+                            <div class="canvas-container">
+                                <svg id="coupling-canvas" width="100%" height="280">
+                                    <!-- Dynamic lines and circles will be inserted here by index.js -->
+                                </svg>
+                            </div>
+
+                            <div class="simulation-legend">
+                                <div class="legend-item"><span class="legend-circle cohesion-node"></span>Cohesive Function</div>
+                                <div class="legend-item"><span class="legend-line strong-dep"></span>Inter-module Dependency</div>
+                                <div class="legend-item"><span class="legend-box boundary"></span>Module Boundary</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 5: Layered Architecture -->
+            <section class="slide" data-title="Layered Architecture">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Layered Architecture in System Design</h2>
+                    <p class="section-intro">Layered (n-tier) architecture partitions concerns, allowing each layer to only interact with the layer directly below it.</p>
+                    
+                    <div class="grid-2col alignment-stretch">
+                        <!-- Interactive Architecture Diagram -->
+                        <div class="architecture-stack flex-column">
+                            <div class="arch-layer" data-layer="presentation">
+                                <div class="layer-num">1</div>
+                                <div class="layer-content">
+                                    <h4>Presentation Layer</h4>
+                                    <span>User Interface & User Interaction</span>
+                                </div>
+                            </div>
+                            <div class="arch-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                            <div class="arch-layer" data-layer="business">
+                                <div class="layer-num">2</div>
+                                <div class="layer-content">
+                                    <h4>Business Logic Layer</h4>
+                                    <span>Business Rules & Data Processing</span>
+                                </div>
+                            </div>
+                            <div class="arch-arrow">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </div>
+                            <div class="arch-layer" data-layer="data">
+                                <div class="layer-num">3</div>
+                                <div class="layer-content">
+                                    <h4>Data Access Layer</h4>
+                                    <span>Data Storage, Queries & Retrieval</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Layer Details Panel -->
+                        <div class="card glass-card arch-details-panel">
+                            <div id="layer-details-empty" class="panel-state active">
+                                <div class="empty-prompt">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                                    <h3>Explore the Architecture</h3>
+                                    <p>Click on any layer of the stack on the left to see how it separates concerns in the **DocuPixie** application.</p>
+                                </div>
+                            </div>
+                            
+                            <div id="layer-details-content" class="panel-state">
+                                <div class="layer-detail-header">
+                                    <span id="detail-layer-num" class="detail-num">1</span>
+                                    <h3 id="detail-layer-title">Presentation Layer</h3>
+                                </div>
+                                <div class="divider"></div>
+                                
+                                <div class="detail-section">
+                                    <strong>Role:</strong>
+                                    <p id="detail-layer-role"></p>
+                                </div>
+
+                                <div class="detail-section margin-top">
+                                    <strong>DocuPixie Implementation:</strong>
+                                    <p id="detail-layer-implementation"></p>
+                                    <ul id="detail-layer-components" class="component-pill-list">
+                                        <!-- Components listed dynamically -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Client-Server Architecture -->
+            <section class="slide" data-title="Client-Server">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Client-Server Architecture</h2>
+                    
+                    <div class="grid-2col alignment-stretch">
+                        <div class="client-server-info flex-column">
+                            <div class="card glass-card">
+                                <h3>Client (Frontend)</h3>
+                                <ul>
+                                    <li>Hosts the graphical user interface.</li>
+                                    <li>Captures user input (e.g., file upload, login details).</li>
+                                    <li>Initiates requests to the server for data or processing.</li>
+                                </ul>
+                            </div>
+                            <div class="card glass-card margin-top">
+                                <h3>Server (Backend)</h3>
+                                <ul>
+                                    <li>Contains core business logic.</li>
+                                    <li>Authenticates requests and query databases.</li>
+                                    <li>Processes requests (e.g., runs OCR or AI text summarization) and responds to the client.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Client-Server Animation Panel -->
+                        <div class="card glass-card flex-column alignment-center">
+                            <h3>Interactive Request-Response Simulator</h3>
+                            <p class="text-center font-sm">Trigger requests from client to server and observe the message flow.</p>
+                            
+                            <div class="simulator-actions">
+                                <button id="btn-sim-login" class="sim-btn">Simulate Login Request</button>
+                                <button id="btn-sim-ocr" class="sim-btn btn-teal">Simulate OCR & Summarize</button>
+                            </div>
+
+                            <div class="client-server-visual">
+                                <div id="node-client" class="network-node">
+                                    <div class="node-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                    </div>
+                                    <span>Client App</span>
+                                </div>
+
+                                <div class="network-line">
+                                    <svg width="100%" height="20">
+                                        <line x1="0%" y1="10" x2="100%" y2="10" stroke="#2a3f55" stroke-width="4" stroke-dasharray="8 6"></line>
+                                    </svg>
+                                    <div id="network-packet" class="network-packet"></div>
+                                </div>
+
+                                <div id="node-server" class="network-node">
+                                    <div class="node-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                    </div>
+                                    <span>Backend Server</span>
+                                </div>
+                            </div>
+
+                            <!-- Live logs of execution -->
+                            <div class="network-log">
+                                <div class="log-title">Network Log Console:</div>
+                                <div id="network-log-lines" class="log-body">
+                                    <div class="log-line system-line">[System Ready] Click a button above to run request...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: UML Diagrams -->
+            <section class="slide" data-title="UML Diagrams">
+                <div class="slide-content">
+                    <h2 class="slide-heading">UML Diagrams for System Design</h2>
+                    <p class="section-intro text-center">Unified Modeling Language (UML) diagrams provide standardized graphical models representing system structures and dynamic relationships.</p>
+
+                    <div class="tab-container">
+                        <div class="tab-headers">
+                            <button class="tab-hdr-btn active" data-tab="class">Class Diagram</button>
+                            <button class="tab-hdr-btn" data-tab="sequence">Sequence Diagram</button>
+                            <button class="tab-hdr-btn" data-tab="activity">Activity Diagram</button>
+                        </div>
+
+                        <div class="tab-contents">
+                            <!-- Class Diagram Tab -->
+                            <div class="tab-pane active" id="tab-class">
+                                <div class="grid-layout-uml">
+                                    <div class="uml-details">
+                                        <h3>Class Diagrams</h3>
+                                        <p>Show classes, attributes, methods, and relationships between objects. Represents the static design structure of the system.</p>
+                                        <div class="accent-box primary-accent">
+                                            <strong>Key Associations modeled:</strong>
+                                            <ul>
+                                                <li><strong>SignUp/Login Form</strong> depends on <strong>UsersDB</strong> connection.</li>
+                                                <li><strong>UploadPage</strong> uses <strong>ExtractAPI</strong> and <strong>SummarizeAPI</strong> to retrieve textual details.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="uml-canvas">
+                                        <!-- SVG Class Diagram -->
+                                        <svg width="100%" height="320" viewBox="0 0 600 320" fill="none">
+                                            <!-- Class 1: User -->
+                                            <rect x="20" y="20" width="160" height="110" rx="6" fill="#1b2a47" stroke="#3d5a80" stroke-width="2"/>
+                                            <text x="30" y="45" font-family="Outfit" font-size="14" font-weight="600" fill="#fff">User</text>
+                                            <line x1="20" y1="55" x2="180" y2="55" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="30" y="75" font-family="Fira Code" font-size="11" fill="#98c1d9">- Email: string</text>
+                                            <text x="30" y="90" font-family="Fira Code" font-size="11" fill="#98c1d9">- Password: string</text>
+                                            <line x1="20" y1="100" x2="180" y2="100" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="30" y="118" font-family="Fira Code" font-size="11" fill="#e0fbfc">+ SignUp()</text>
+
+                                            <!-- Connector User -> Document -->
+                                            <path d="M180 75 H 250" stroke="#3d5a80" stroke-width="2" stroke-dasharray="5 3"/>
+                                            <polygon points="250,75 242,70 242,80" fill="#3d5a80"/>
+                                            <text x="190" y="68" font-family="Outfit" font-size="11" fill="#6c7a89">1 .. *</text>
+
+                                            <!-- Class 2: Document -->
+                                            <rect x="250" y="20" width="170" height="130" rx="6" fill="#1b2a47" stroke="#3d5a80" stroke-width="2"/>
+                                            <text x="260" y="45" font-family="Outfit" font-size="14" font-weight="600" fill="#fff">Document</text>
+                                            <line x1="250" y1="55" x2="420" y2="55" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="260" y="72" font-family="Fira Code" font-size="11" fill="#98c1d9">- Id: int</text>
+                                            <text x="260" y="87" font-family="Fira Code" font-size="11" fill="#98c1d9">- RawText: string</text>
+                                            <text x="260" y="102" font-family="Fira Code" font-size="11" fill="#98c1d9">- SummaryText: string</text>
+                                            <line x1="250" y1="112" x2="420" y2="112" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="260" y="125" font-family="Fira Code" font-size="11" fill="#e0fbfc">+ ProcessOCR()</text>
+
+                                            <!-- Class 3: OCR Engine (Dependency) -->
+                                            <rect x="140" y="200" width="150" height="90" rx="6" fill="#13233c" stroke="#293241" stroke-width="2"/>
+                                            <text x="150" y="222" font-family="Outfit" font-size="13" font-weight="600" fill="#eee">extractApi</text>
+                                            <line x1="140" y1="232" x2="290" y2="232" stroke="#293241" stroke-width="1"/>
+                                            <text x="150" y="250" font-family="Fira Code" font-size="10" fill="#98c1d9">- ocrEngine</text>
+                                            <line x1="140" y1="260" x2="290" y2="260" stroke="#293241" stroke-width="1"/>
+                                            <text x="150" y="278" font-family="Fira Code" font-size="10" fill="#e0fbfc">+ ExtractText()</text>
+
+                                            <!-- Class 4: Summarize API (Dependency) -->
+                                            <rect x="360" y="200" width="160" height="90" rx="6" fill="#13233c" stroke="#293241" stroke-width="2"/>
+                                            <text x="370" y="222" font-family="Outfit" font-size="13" font-weight="600" fill="#eee">summarizeAPI</text>
+                                            <line x1="360" y1="232" x2="520" y2="232" stroke="#293241" stroke-width="1"/>
+                                            <text x="370" y="250" font-family="Fira Code" font-size="10" fill="#98c1d9">- apiUrl</text>
+                                            <line x1="360" y1="260" x2="520" y2="260" stroke="#293241" stroke-width="1"/>
+                                            <text x="370" y="278" font-family="Fira Code" font-size="10" fill="#e0fbfc">+ GetSummary()</text>
+
+                                            <!-- Connectors from Document to APIs -->
+                                            <path d="M290 150 L 230 200" stroke="#3d5a80" stroke-width="1.5" stroke-dasharray="4 2"/>
+                                            <path d="M380 150 L 420 200" stroke="#3d5a80" stroke-width="1.5" stroke-dasharray="4 2"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sequence Diagram Tab -->
+                            <div class="tab-pane" id="tab-sequence">
+                                <div class="grid-layout-uml">
+                                    <div class="uml-details">
+                                        <h3>Sequence Diagrams</h3>
+                                        <p>Illustrate the order of interactions between objects, showing message flow over time.</p>
+                                        <div class="accent-box success-accent">
+                                            <strong>DocuPixie Flow:</strong>
+                                            <ol>
+                                                <li>Client initiates scanning by uploading document file.</li>
+                                                <li>`ExtractAPI` extracts text using Tesseract OCR.</li>
+                                                <li>`SummarizeAPI` communicates with AI API to extract key summary.</li>
+                                                <li>Database records metadata and presents text/summary in UI.</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="uml-canvas">
+                                        <!-- SVG Sequence Diagram -->
+                                        <svg width="100%" height="320" viewBox="0 0 600 320" fill="none">
+                                            <!-- Lifelines -->
+                                            <line x1="100" y1="40" x2="100" y2="280" stroke="#4c5f7a" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                            <line x1="260" y1="40" x2="260" y2="280" stroke="#4c5f7a" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                            <line x1="420" y1="40" x2="420" y2="280" stroke="#4c5f7a" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                            <line x1="540" y1="40" x2="540" y2="280" stroke="#4c5f7a" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+                                            <!-- Lifeline headers -->
+                                            <rect x="50" y="10" width="100" height="30" rx="3" fill="#1b2a47" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="100" y="29" font-family="Outfit" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">UI (UploadPage)</text>
+
+                                            <rect x="210" y="10" width="100" height="30" rx="3" fill="#1b2a47" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="260" y="29" font-family="Outfit" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">extractApi</text>
+
+                                            <rect x="370" y="10" width="100" height="30" rx="3" fill="#1b2a47" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="420" y="29" font-family="Outfit" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">summarizeAPI</text>
+
+                                            <rect x="495" y="10" width="90" height="30" rx="3" fill="#1b2a47" stroke="#3d5a80" stroke-width="1"/>
+                                            <text x="540" y="29" font-family="Outfit" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Database</text>
+
+                                            <!-- Message 1 -->
+                                            <path d="M100 80 H 260" stroke="#ee6c4d" stroke-width="1.5"/>
+                                            <polygon points="260,80 252,76 252,84" fill="#ee6c4d"/>
+                                            <text x="180" y="73" font-family="Outfit" font-size="10" fill="#ee6c4d" text-anchor="middle">1. ExtractText(img)</text>
+
+                                            <!-- Message 1 return -->
+                                            <path d="M260 120 H 100" stroke="#ee6c4d" stroke-width="1.2" stroke-dasharray="3 3"/>
+                                            <polygon points="100,120 108,116 108,124" fill="#ee6c4d"/>
+                                            <text x="180" y="113" font-family="Outfit" font-size="10" fill="#98c1d9" text-anchor="middle">rawText</text>
+
+                                            <!-- Message 2 -->
+                                            <path d="M100 160 H 420" stroke="#2a9d8f" stroke-width="1.5"/>
+                                            <polygon points="420,160 412,156 412,164" fill="#2a9d8f"/>
+                                            <text x="260" y="153" font-family="Outfit" font-size="10" fill="#2a9d8f" text-anchor="middle">2. GetSummary(rawText)</text>
+
+                                            <!-- Message 2 return -->
+                                            <path d="M420 200 H 100" stroke="#2a9d8f" stroke-width="1.2" stroke-dasharray="3 3"/>
+                                            <polygon points="100,200 108,196 108,204" fill="#2a9d8f"/>
+                                            <text x="260" y="193" font-family="Outfit" font-size="10" fill="#98c1d9" text-anchor="middle">summaryText</text>
+
+                                            <!-- Message 3 -->
+                                            <path d="M100 240 H 540" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <polygon points="540,240 532,236 532,244" fill="#3d5a80"/>
+                                            <text x="320" y="233" font-family="Outfit" font-size="10" fill="#98c1d9" text-anchor="middle">3. SaveDocument(text, summary)</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Activity Diagram Tab -->
+                            <div class="tab-pane" id="tab-activity">
+                                <div class="grid-layout-uml">
+                                    <div class="uml-details">
+                                        <h3>Activity Diagrams</h3>
+                                        <p>Model the workflow of a system, showcasing the operational decisions and flow steps involved in a process.</p>
+                                        <div class="accent-box warning-accent">
+                                            <strong>Key Nodes:</strong>
+                                            <ul>
+                                                <li><strong>Initial Node:</strong> File uploaded.</li>
+                                                <li><strong>Decision Node:</strong> Is OCR conversion successful?</li>
+                                                <li><strong>Fork/Join Node:</strong> Save file metadata & extract summary concurrently.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="uml-canvas">
+                                        <!-- SVG Activity Diagram -->
+                                        <svg width="100%" height="320" viewBox="0 0 600 320" fill="none">
+                                            <!-- Initial node -->
+                                            <circle cx="300" cy="25" r="8" fill="#e0fbfc"/>
+                                            
+                                            <!-- Step 1 -->
+                                            <line x1="300" y1="33" x2="300" y2="60" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <polygon points="300,60 296,52 304,52" fill="#3d5a80"/>
+                                            <rect x="210" y="60" width="180" height="30" rx="15" fill="#1b2a47" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <text x="300" y="79" font-family="Outfit" font-size="11" fill="#fff" text-anchor="middle">Upload / Drag-Drop Image</text>
+
+                                            <!-- Step 2 -->
+                                            <line x1="300" y1="90" x2="300" y2="120" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <polygon points="300,120 296,112 304,112" fill="#3d5a80"/>
+                                            <rect x="220" y="120" width="160" height="30" rx="15" fill="#1b2a47" stroke="#ee6c4d" stroke-width="1.5"/>
+                                            <text x="300" y="139" font-family="Outfit" font-size="11" fill="#fff" text-anchor="middle">Execute OCR Service</text>
+
+                                            <!-- Decision Diamond -->
+                                            <line x1="300" y1="150" x2="300" y2="180" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <polygon points="300,180 296,172 304,172" fill="#3d5a80"/>
+                                            <polygon points="300,180 325,195 300,210 275,195" fill="#1b2a47" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <text x="300" y="199" font-family="Outfit" font-size="9" fill="#98c1d9" text-anchor="middle">OK?</text>
+
+                                            <!-- No branch (left) -->
+                                            <path d="M 275 195 H 150 V 225" stroke="#ee6c4d" stroke-width="1.5"/>
+                                            <polygon points="150,225 146,217 154,217" fill="#ee6c4d"/>
+                                            <text x="195" y="190" font-family="Outfit" font-size="10" fill="#ee6c4d">No</text>
+                                            <rect x="80" y="225" width="140" height="30" rx="5" fill="#2d1b1b" stroke="#ee6c4d" stroke-width="1"/>
+                                            <text x="150" y="244" font-family="Outfit" font-size="10" fill="#ffb3b3" text-anchor="middle">Show Scanning Error</text>
+
+                                            <!-- Yes branch (down) -->
+                                            <line x1="300" y1="210" x2="300" y2="240" stroke="#2a9d8f" stroke-width="1.5"/>
+                                            <polygon points="300,240 296,232 304,232" fill="#2a9d8f"/>
+                                            <text x="310" y="226" font-family="Outfit" font-size="10" fill="#2a9d8f">Yes</text>
+                                            <rect x="220" y="240" width="160" height="30" rx="15" fill="#1b2a47" stroke="#2a9d8f" stroke-width="1.5"/>
+                                            <text x="300" y="259" font-family="Outfit" font-size="11" fill="#fff" text-anchor="middle">Summarize & Save</text>
+
+                                            <!-- Terminal node -->
+                                            <line x1="300" y1="270" x2="300" y2="295" stroke="#3d5a80" stroke-width="1.5"/>
+                                            <polygon points="300,295 296,287 304,287" fill="#3d5a80"/>
+                                            <circle cx="300" cy="305" r="10" stroke="#e0fbfc" stroke-width="1.5"/>
+                                            <circle cx="300" cy="305" r="6" fill="#e0fbfc"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 8: Design Patterns -->
+            <section class="slide" data-title="Design Patterns">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Design Patterns & Applications</h2>
+                    
+                    <div class="grid-3col">
+                        <!-- Pattern 1: Singleton -->
+                        <div class="card glass-card hover-card flex-column text-center pattern-box" data-pattern="singleton">
+                            <div class="pattern-header">
+                                <span class="pattern-num">1</span>
+                                <h3>Singleton</h3>
+                            </div>
+                            <p class="font-sm">Ensures that only a single instance of a class is created throughout the application lifetime.</p>
+                            <div class="pattern-usage">
+                                <strong>Application:</strong>
+                                <span>SQL Server connection manager or Configuration manager in DocuPixie.</span>
+                            </div>
+                        </div>
+
+                        <!-- Pattern 2: Factory -->
+                        <div class="card glass-card hover-card flex-column text-center pattern-box" data-pattern="factory">
+                            <div class="pattern-header">
+                                <span class="pattern-num">2</span>
+                                <h3>Factory Method</h3>
+                            </div>
+                            <p class="font-sm">Provides a standardized interface for object creation, abstracting exact class logic.</p>
+                            <div class="pattern-usage">
+                                <strong>Application:</strong>
+                                <span>Generating dynamic Document Scanner modules depending on file extensions (PDF, JPG, PNG).</span>
+                            </div>
+                        </div>
+
+                        <!-- Pattern 3: Observer -->
+                        <div class="card glass-card hover-card flex-column text-center pattern-box" data-pattern="observer">
+                            <div class="pattern-header">
+                                <span class="pattern-num">3</span>
+                                <h3>Observer</h3>
+                            </div>
+                            <p class="font-sm">Defines a one-to-many relationship; altering a state notifies and updates all dependents.</p>
+                            <div class="pattern-usage">
+                                <strong>Application:</strong>
+                                <span>Notifying OCR extraction UI elements and summarizer nodes when background processes complete.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Pattern Animation Display -->
+                    <div class="card glass-card margin-top pattern-playground">
+                        <h4 class="text-center" id="pattern-play-title">Click a pattern above to launch its live concept visualization!</h4>
+                        <div id="pattern-visual-container" class="pattern-visual-container">
+                            <!-- Injected by index.js -->
+                            <div class="empty-state">
+                                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span>Interactive Playground Ready</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 9: Scalability & Performance -->
+            <section class="slide" data-title="Scalability & Performance">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Scalability & Performance Considerations</h2>
+                    
+                    <div class="grid-2col alignment-stretch">
+                        <div class="scalability-info flex-column">
+                            <div class="card glass-card">
+                                <div class="card-badge success-badge">Outward Growth</div>
+                                <h3>Horizontal Scaling</h3>
+                                <p>Adding more hardware nodes (servers) to distribute workloads and handle spikes in network traffic.</p>
+                                <ul class="font-sm">
+                                    <li>Uses a Load Balancer to split user requests.</li>
+                                    <li>High fault tolerance (if one server fails, others respond).</li>
+                                </ul>
+                            </div>
+                            <div class="card glass-card margin-top">
+                                <div class="card-badge primary-badge">Upward Growth</div>
+                                <h3>Vertical Scaling</h3>
+                                <p>Enhancing individual server nodes by adding resources (upgrading CPUs, RAM, storage, or GPU capability).</p>
+                                <ul class="font-sm">
+                                    <li>Easy to implement with no architectural modifications.</li>
+                                    <li>Limited by physical hardware ceilings and single-point-of-failure risks.</li>
+                                </ul>
+                            </div>
+                            <div class="card glass-card margin-top">
+                                <h3>Performance Metrics</h3>
+                                <div class="metrics-grid">
+                                    <div class="metric-item">
+                                        <strong>Throughput</strong>
+                                        <span>Total requests processed successfully per second.</span>
+                                    </div>
+                                    <div class="metric-item">
+                                        <strong>Response Time</strong>
+                                        <span>Total latency from user request to completed response.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Scalability Simulator Widget -->
+                        <div class="card glass-card scalability-playground flex-column">
+                            <h3>Horizontal Scaling Load Simulator</h3>
+                            <p class="font-sm text-center">Increase active backend nodes to see request balancing, throughput improvements, and latency drops.</p>
+                            
+                            <div class="scale-slider-container">
+                                <label for="server-scale-slider">Number of API Servers: <span id="lbl-server-count">3</span></label>
+                                <input type="range" id="server-scale-slider" min="1" max="10" value="3">
+                            </div>
+
+                            <div class="metrics-dashboard">
+                                <div class="dashboard-gauge">
+                                    <span class="gauge-label">Throughput</span>
+                                    <span id="metric-throughput" class="gauge-value">450 req/s</span>
+                                </div>
+                                <div class="dashboard-gauge">
+                                    <span class="gauge-label">Avg Latency</span>
+                                    <span id="metric-latency" class="gauge-value">40 ms</span>
+                                </div>
+                            </div>
+
+                            <div class="load-balancer-visual">
+                                <div class="lb-client">
+                                    <div class="pulse-node">Clients</div>
+                                </div>
+                                <div class="lb-balancer">
+                                    <div class="balancer-core">Load Balancer</div>
+                                </div>
+                                <div id="lb-servers-pool" class="lb-servers-pool">
+                                    <!-- Dynamic servers rendering -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 10: Security -->
+            <section class="slide" data-title="Security">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Design for Security: Best Practices</h2>
+                    <div class="grid-2col alignment-stretch">
+                        <div class="security-theory">
+                            <div class="card glass-card">
+                                <h3>Core Security Principles</h3>
+                                <div class="sec-principle margin-bottom">
+                                    <div class="sec-hdr">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                        <h4>Least Privilege</h4>
+                                    </div>
+                                    <p class="font-sm">Restrict user access and microservices authentication scopes to only the minimum resources necessary for their operational role.</p>
+                                </div>
+                                <div class="sec-principle">
+                                    <div class="sec-hdr">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a9d8f" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                        <h4>Defense in Depth</h4>
+                                    </div>
+                                    <p class="font-sm">Establish multiple redundant layers of security checks across networks, databases, layers, and code execution blocks.</p>
+                                </div>
+                            </div>
+
+                            <div class="card glass-card margin-top">
+                                <h3>Defensive Tools</h3>
+                                <ul class="sec-checklist">
+                                    <li><strong>Threat Modeling:</strong> Proactively charting and identifying attack profiles before coding.</li>
+                                    <li><strong>Secure Coding Practices:</strong> Enforcing automated input sanitization, output encoding, and dependency updates.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Case Study Focus: Security in DocuPixie -->
+                        <div class="card glass-card border-warning-accent flex-column">
+                            <div class="badge-lock">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                                <span>Security Case Study</span>
+                            </div>
+                            <h3>DocuPixie Security Architecture</h3>
+                            <p class="font-sm text-secondary">To protect sensitive customer scanned files, several secure layers are designed into the software:</p>
+                            
+                            <div class="sec-doc-layer">
+                                <strong>1. Input Integrity (Validation Regex)</strong>
+                                <p class="font-sm text-secondary">Sign-up and passwords validate complexity parameters client-side and server-side to resist brute-force hacks.</p>
+                                <pre><code>/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/</code></pre>
+                            </div>
+
+                            <div class="sec-doc-layer margin-top-sm">
+                                <strong>2. SQL injection Mitigation</strong>
+                                <p class="font-sm text-secondary">Instead of raw string concatenation queries, queries must use SQL Parameterized Bindings.</p>
+                                <pre><code>SqlCommand cmd = new SqlCommand("SELECT * FROM Users WHERE Email = @Email", conn);
+cmd.Parameters.AddWithValue("@Email", email);</code></pre>
+                            </div>
+
+                            <div class="sec-doc-layer margin-top-sm">
+                                <strong>3. Sensitive Document AES-256 Storage</strong>
+                                <p class="font-sm text-secondary">All raw extracted texts and scanned image binaries are encrypted using AES keys before being written to disk files.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 11: Challenges -->
+            <section class="slide" data-title="Challenges">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Common Challenges in System Design</h2>
+                    
+                    <div class="grid-2col alignment-stretch">
+                        <div class="card challenge-box border-red">
+                            <div class="challenge-title">
+                                <span class="challenge-marker">!</span>
+                                <h3>The Hard Trade-Offs</h3>
+                            </div>
+                            <div class="challenge-item">
+                                <strong>Balancing Performance & Scalability</strong>
+                                <p>Adding servers increases network overhead and data syncing lag, which can raise baseline latencies for simple query executions.</p>
+                            </div>
+                            <div class="challenge-item margin-top-sm">
+                                <strong>Integrating Legacy Databases</strong>
+                                <p>Linking state-of-the-art serverless APIs to older monolithic database schemas without causing data corruption or bottlenecks.</p>
+                            </div>
+                            <div class="challenge-item margin-top-sm">
+                                <strong>Handling Network Partition Failures</strong>
+                                <p>Ensuring system durability and eventual data consistency (following CAP Theorem constraints) when distributed networks split.</p>
+                            </div>
+                        </div>
+
+                        <div class="card solution-box border-green">
+                            <div class="solution-title">
+                                <span class="solution-marker">✓</span>
+                                <h3>Practical Architectural Solutions</h3>
+                            </div>
+                            <div class="solution-item">
+                                <strong>Adopt Iterative Development</strong>
+                                <p>Break system designs into smaller milestones. Build basic components, deploy, measure bottlenecks, and re-architect incrementally.</p>
+                            </div>
+                            <div class="solution-item margin-top-sm">
+                                <strong>Use Automated Testing Tools</strong>
+                                <p>Run load/stress generators (e.g. Apache JMeter, k6) to simulate high-concurrency requests and discover failures early.</p>
+                            </div>
+                            <div class="solution-item margin-top-sm">
+                                <strong>Implement Asynchronous Queuing</strong>
+                                <p>Use message brokers (e.g. RabbitMQ, Kafka) to isolate heavy workloads (like OCR conversion) from user-facing threads.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 12: Interactive Case Study Simulator -->
+            <section class="slide" data-title="DocuPixie Simulator">
+                <div class="slide-content">
+                    <h2 class="slide-heading">Case Study: DocuPixie Interactive Prototype</h2>
+                    <p class="section-intro text-center">Interactive C# Windows Forms application simulation. Test the user flows (SignUp, Login, Scan & Summarize) based on Axure RP layouts.</p>
+
+                    <!-- Interactive Windows Form Frame -->
+                    <div class="winforms-container">
+                        <!-- Desktop OS Window Bar -->
+                        <div class="winbar">
+                            <div class="winbar-left">
+                                <img src="assets/options_window.jpg" class="winbar-icon" alt="icon">
+                                <span>DocuPixie - Axure RP 9 Team Edition</span>
+                            </div>
+                            <div class="winbar-right">
+                                <span class="winbtn-minimize">&#9472;</span>
+                                <span class="winbtn-maximize">&#9723;</span>
+                                <span class="winbtn-close">&#10005;</span>
+                            </div>
+                        </div>
+
+                        <!-- Inner Screen Wrapper -->
+                        <div id="winform-screen" class="winform-screen">
+                            <!-- Injected dynamically by index.js -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 13: Group Members & Conclusion -->
+            <section class="slide" data-title="Group Members">
+                <div class="slide-content text-center flex-column justify-center height-full">
+                    <h2 class="slide-heading">Group Members</h2>
+                    <p class="subtitle text-secondary">Software Engineering - IT2122 | Group - 01</p>
+                    
+                    <div class="members-grid">
+                        <div class="member-card">
+                            <div class="member-avatar">22</div>
+                            <h4>2021 / ICT / 22</h4>
+                            <span>Group Lead</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">34</div>
+                            <h4>2021 / ICT / 34</h4>
+                            <span>Core Developer</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">43</div>
+                            <h4>2021 / ICT / 43</h4>
+                            <span>System Architect</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">49</div>
+                            <h4>2021 / ICT / 49</h4>
+                            <span>Database Designer</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">51</div>
+                            <h4>2021 / ICT / 51</h4>
+                            <span>UI/UX Designer</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">62</div>
+                            <h4>2021 / ICT / 62</h4>
+                            <span>QA Specialist</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">75</div>
+                            <h4>2021 / ICT / 75</h4>
+                            <span>NLP Specialist</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">80</div>
+                            <h4>2021 / ICT / 80</h4>
+                            <span>Security Auditor</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">93</div>
+                            <h4>2021 / ICT / 93</h4>
+                            <span>DevOps Engineer</span>
+                        </div>
+                        <div class="member-card">
+                            <div class="member-avatar">124</div>
+                            <h4>2021 / ICT / 124</h4>
+                            <span>Documentation Lead</span>
+                        </div>
+                    </div>
+
+                    <div class="conclusion-box margin-top">
+                        <h3>Thank You!</h3>
+                        <p>Questions & Answers Session</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- DocuPixie Main Isolated Simulator view (when selected in mode-selector) -->
+        <div id="case-study-viewport" class="case-study-viewport hidden">
+            <!-- Full size simulator view -->
+        </div>
+    </main>
+
+    <!-- Footer Controls -->
+    <footer class="app-footer">
+        <div class="footer-left">
+            <button id="prev-btn" class="nav-btn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                <span>Previous</span>
+            </button>
+        </div>
+
+        <div class="footer-center">
+            <div class="progress-bar-container">
+                <div id="slide-progress" class="slide-progress"></div>
+            </div>
+            <span id="slide-number" class="slide-number">01 / 13</span>
+        </div>
+
+        <div class="footer-right">
+            <button id="next-btn" class="nav-btn">
+                <span>Next</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Shortcuts Toast notification -->
+    <div id="shortcuts-toast" class="shortcuts-toast">
+        <span>Use <strong>←</strong> and <strong>→</strong> keys to navigate slides</span>
+        <button id="close-toast-btn" class="close-btn">&times;</button>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
